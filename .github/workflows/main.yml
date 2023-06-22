@@ -6,8 +6,10 @@ jobs:
     name: A job to say hello
     steps:
       - uses: actions/checkout@v3
+      - run: touch nacho.txt
+      - run: echo "Hola " >> nacho2.txt
       - id: foo
-        uses: nachoborente/hello-world-composite-action@v3
+        uses: nachoborente/hello-world-composite-action@v4
         with:
           who-to-greet: 'Nacho DevOps'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
