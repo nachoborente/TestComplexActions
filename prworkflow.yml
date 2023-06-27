@@ -1,0 +1,25 @@
+name: TestCompositeAction
+run-name: ${{ github.head_ref}}#${{ github.base_ref }} by @${{ github.actor }}
+on:
+  pull request:
+    types: opened
+    branches:
+      - develop
+      - release
+      - main
+
+# leer body de la pull request
+jobs:
+  EDIT_Body:
+    name: EditBody
+    runs-on: ubuntu-latest
+    steps:
+      - run: 
+          echo 'PR description: ${{ github.event.pull_request.body }}' > PRDesc.txt
+      - uses: actions/checkout@v3
+      - id: test01
+        uses: nachoborente/CompositeActionsTest01@v0
+        with:
+          InputText: '${{ github.event.pull_request.body }}'
+          InputFile: 'PRDesc.txt'
+      - run: echo ${{ steps.test01.outputs.TestsToRun }}
