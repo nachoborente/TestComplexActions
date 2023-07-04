@@ -1,0 +1,20 @@
+name: TestCompositeAction
+run-name: ${{ github.head_ref}} by @${{ github.actor }}
+on:
+  push:
+    paths-ignore:
+        - './github/**'
+ 
+# leer body de la pull request
+jobs:
+  EDIT_Body:
+    name: EditBody
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "PR ${{ vars.PRDescTest }}" > PRDesc.txt
+      - id: test01
+        uses: nachoborente/CompositeActionsTest01@v0.2.4
+        with:
+          InputText: '${{ vars.PRDescTest }}'
+          InputFile: 'PRDesc.txt'
+      - run: echo ${{ steps.test01.outputs.TestsToRun }}
