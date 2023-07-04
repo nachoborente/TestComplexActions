@@ -11,10 +11,10 @@ jobs:
     name: EditBody
     runs-on: ubuntu-latest
     steps:
-      - run: echo "PR ${{ vars.PRDescTest }}" > PRDesc.txt
+      - run: echo "PR ${{ vars.PRDescTest }}" > prdesc.txt
       - id: test01
-        uses: nachoborente/CompositeActionsTest01@v0.2.4
+        uses: nachoborente/CompositeActionsTest01@v0.2.5
         with:
           InputText: '${{ vars.PRDescTest }}'
-          InputFile: 'PRDesc.txt'
+          InputFile: 'prdesc.txt'
       - run: echo ${{ steps.test01.outputs.TestsToRun }}
