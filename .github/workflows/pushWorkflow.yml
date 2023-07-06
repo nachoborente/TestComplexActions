@@ -13,7 +13,7 @@ jobs:
     steps:
       - run: echo "PR ${{ vars.PRDescTest }}" > prdesc.txt
       - id: test01
-        uses: nachoborente/CompositeActionsTest01@v0.2.6
+        uses: nachoborente/CompositeActionsTest01@v0.2.7
         with:
           InputText: '${{ vars.PRDescTest }}'
           InputFile: 'prdesc.txt'
