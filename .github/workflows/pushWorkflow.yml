@@ -25,7 +25,7 @@ jobs:
       - run: echo "PR ${{ vars.PRDescTest }}" > prdesc.txt
       #string parameters
       - id: get-test-classes
-        run: ./scripts/getPRText.sh "test01,test02,test03" "prdesc.txt"
+        run: ./scripts/getPRText_WithArgs.sh "test01,test02,test03" "prdesc.txt"
         shell: bash
       #multiline parameters
 
