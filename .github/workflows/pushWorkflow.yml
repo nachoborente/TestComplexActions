@@ -27,6 +27,8 @@ jobs:
       - id: get-test-classes
         run: ./scripts/getPRText_WithArgs.sh "test01,test02,test03" "prdesc.txt"
         shell: bash
+      - run: echo 'listofclasses=$(./scripts/getPRText_WithArgs.sh "test01,test02,test03" "prdesc.txt")' >> $GITHUB_OUTPUT
+      - run: echo $listofclasses
       #multiline parameters
 
 # Using Composite Actions
