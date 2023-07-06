@@ -27,7 +27,7 @@ jobs:
       - id: get-test-classes
         run: echo ./scripts/getPRText_WithArgs.sh "test01,test02,test03" "prdesc.txt"
         shell: bash
-      - run: "listofclasses=$(./scripts/getPRText_WithArgs.sh \"test01,test02,test03\" \"prdesc.txt\")" >> $GITHUB_ENV
+      - run: echo "listofclasses=$(./scripts/getPRText_WithArgs.sh \"test01,test02,test03\" \"prdesc.txt\")" >> $GITHUB_ENV
       - run: echo "- ${{ env.listofclasses }}" >> $GITHUB_STEP_SUMMARY
       #multiline parameters
 
