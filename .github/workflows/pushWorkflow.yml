@@ -11,7 +11,14 @@ jobs:
     name: EditBody
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - run: |
+          pwd
+          ls -R
       - run: echo "PR ${{ vars.PRDescTest }}" > prdesc.txt
+      - id: get-test-classes
+        run: ./scripts/getPRText.sh
+        shell: bash
       - id: test01
         uses: nachoborente/CompositeActionsTest01@v0.2.7
         with:
