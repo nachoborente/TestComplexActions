@@ -13,5 +13,5 @@ Execute composite action: nachoborente/CompositeActionsTest01@v0
 PushWorkflow
 launched every push
 try to execute the composite action
-run05
+run06
 
