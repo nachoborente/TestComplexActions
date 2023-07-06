@@ -2,7 +2,7 @@
 #inputfile=$2
 inputfile="prdesc.txt"
 inputtext=$(cat prdesc.txt)
-
+echo "no test" > TestToBeRun.txt
 echo "$inputtext" | while IFS= read -r line
 do
 if [[ $OpenClassMD == 1 ]]
