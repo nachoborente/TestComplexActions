@@ -12,16 +12,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      #Adding a job summary
+      - run: |
+          echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
+          echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
+          echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
+      #get current path and files
       - run: |
           pwd
           ls -R
       - run: echo "PR ${{ vars.PRDescTest }}" > prdesc.txt
+      #string parameters
       - id: get-test-classes
-        run: ./scripts/getPRText.sh
+        run: ./scripts/getPRText.sh "test01,test02,test03" "prdesc.txt"
         shell: bash
-      - id: test01
-        uses: nachoborente/CompositeActionsTest01@v0.2.7
-        with:
-          InputText: '${{ vars.PRDescTest }}'
-          InputFile: 'prdesc.txt'
-      - run: echo ${{ steps.test01.outputs.TestsToRun }}
+      #multiline parameters
+
+# Using Composite Actions
+#
+#      - id: test01
+#        uses: nachoborente/CompositeActionsTest01@v0.2.7
+#        with:
+#          InputText: '${{ vars.PRDescTest }}'
+#          InputFile: 'prdesc.txt'
+#      - run: echo ${{ steps.test01.outputs.TestsToRun }}
